@@ -16,10 +16,10 @@
     font-weight: 700;
 }
 
-.overlay {
-    background-color: transparent;
-    display: none;
-}
+/*.overlay {*/
+/*    background-color: transparent;*/
+/*    display: none;*/
+/*}*/
 
 body {
     font-family:Inter, "Segoe UI", sans-serif;
