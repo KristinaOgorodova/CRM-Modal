@@ -10,6 +10,7 @@ const list = [
         "discont": false,
         "count": 3,
         "units": "шт",
+        "sum": 2000,
         "images": {
             "small": "img/smrtxiaomi11t-m.jpg",
             "big": "img/smrtxiaomi11t-b.jpg"
@@ -24,6 +25,7 @@ const list = [
             "discont": 5,
             "count": 1,
             "units": "шт",
+            "sum": 2000,
             "images": {
                 "small": "img/cheetancar-m.jpg",
                 "big": "img/cheetancar-b.jpg"
@@ -38,6 +40,7 @@ const list = [
             "discont": 15,
             "count": 4,
             "units": "шт",
+            "sum": 2000,
             "images": {
                 "small": "img/tvboxmecool-m.jpg",
                 "big": "img/tvboxmecool-b.jpg"
@@ -52,6 +55,7 @@ const list = [
             "discont": false,
             "count": 420,
             "units": "v",
+            "sum": 2000,
             "images": {
                 "small": "img/lan_proconnect43-3-25.jpg",
                 "big": "img/lan_proconnect43-3-25-b.jpg"
@@ -59,29 +63,31 @@ const list = [
         }
     ];
 
-const tableBody = document.createElement('tbody');
+const tableBody = document.querySelector('tbody');
 
 const createRow = (obj) => {
     let tr = document.createElement('tr');
 
-    tr.classList.add('tr');
+    tr.classList.add('td');
+
 
     tr.insertAdjacentHTML('beforeend',
         `<td>${obj.id}</td>
-            <td>${obj.title}</td>
-            <td>${obj.price}</td>
-            <td>${obj.description}</td>
-            <td>${obj.category}</td>
-            <td>${obj.discont}</td>
-            <td>${obj.count}</td>
-            <td>${obj.units}</td>
-            <td>${obj.images}</td>`);
+    <td>${obj.title}</td>
+    <td>${obj.category}</td>
+    <td class="qty">${obj.units}</td>
+    <td class="amount">${obj.count}</td>
+    <td>${obj.price}</td>
+    <td>${obj.sum}</td>    
+    <td><button class="picture-btn"><img src="./image/carbon_no-image.svg" alt="нет картинки"></button></td>
+    <td><button class="picture-btn"><img src="./image/edit.svg" alt="редактировать" ></button></td>
+    <td><button class="picture-btn"><img src="./image/cart.svg" alt="корзина" ></button></td>`);
     tableBody.append(tr);
 }
 
 const renderGoods = (array) => {
-  return array.map(obj => {
+  const newTable = array.map(obj => {
       return createRow(obj)});
 };
 
-console.log(renderGoods(list));
+renderGoods(list);
