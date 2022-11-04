@@ -59,26 +59,29 @@ const list = [
         }
     ];
 
-const menu = {
-    width: 300,
-    height: 200,
-    title: "Menu"
-};
+const tableBody = document.createElement('tbody');
 
 const createRow = (obj) => {
     let tr = document.createElement('tr');
-    let td = document.createElement('td');
 
-    for (let key in obj) {
-        tr.textContent = key;
-        td.textContent = obj[key];
-    }
+    tr.classList.add('tr');
 
-    return tr.insertAdjacentElement('afterbegin', td);
+    tr.insertAdjacentHTML('beforeend',
+        `<td>${obj.id}</td>
+            <td>${obj.title}</td>
+            <td>${obj.price}</td>
+            <td>${obj.description}</td>
+            <td>${obj.category}</td>
+            <td>${obj.discont}</td>
+            <td>${obj.count}</td>
+            <td>${obj.units}</td>
+            <td>${obj.images}</td>`);
+    tableBody.append(tr);
 }
 
-console.log(createRow(menu));
+const renderGoods = (array) => {
+  return array.map(obj => {
+      return createRow(obj)});
+};
 
-const renderGoods = () => {
-
-}
+console.log(renderGoods(list));
