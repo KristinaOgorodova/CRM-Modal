@@ -1,4 +1,5 @@
-@import "../../Modal/style/normalize.css";
+@import "./normalize.css";
 @import "./Global_style.css";
 @import "./table.style.css";
+@import "./modal-style.css";
 

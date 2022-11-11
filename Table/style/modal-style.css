@@ -6,7 +6,7 @@
 
 @font-face {
     font-family: Inter;
-    src: local('Inter Medium'), url(../../Modal/fonts/Inter/static/Inter-Medium.ttf) format("ttf");
+    src: local('Inter Medium'), url(../fonts/Inter/static/Inter-Medium.ttf) format("ttf");
     font-weight: 500;
 }
 
@@ -53,7 +53,6 @@ h1 {
 }
 
 .line {
-    max-width: 580px;
     min-height: 1px;
     background:  #C6C2DE;
     margin-bottom: 21px;
@@ -66,7 +65,7 @@ h1 {
 .add-product__close-btn:after {
     content: " ";
     position: absolute;
-    background-image: url("../Group 85.svg");
+    background-image: url("../image/Group 85.svg");
     background-repeat: no-repeat;
     background-size: contain;
     top: 7px;
@@ -178,7 +177,7 @@ h1 {
     width: 40px;
     top:-14px;
     left:5px;
-    background-image: url(../checked.png);
+    background-image: url(../image/checked.png);
     background-repeat: no-repeat;
     opacity: 0;
 }
