@@ -80,7 +80,7 @@ const createRow = (obj) => {
     <td>${obj.sum}</td>    
     <td><button class="picture-btn"><img src="./image/carbon_no-image.svg" alt="нет картинки"></button></td>
     <td><button class="picture-btn"><img src="./image/edit.svg" alt="редактировать" ></button></td>
-    <td><button class="picture-btn"><img src="./image/cart.svg" alt="корзина" ></button></td>`);
+    <td><button class="picture-btn delete"><img src="./image/cart.svg" alt="корзина" ></button></td>`);
   tableBody.append(tr);
 };
 
@@ -129,10 +129,13 @@ tableBody.addEventListener('click', ({target}) => {
     const productId = +currentRow.querySelector('.product-id').textContent;
     const currentRowIndex = products.findIndex((product) => product.id === productId);
 
-    products.splice(currentRowIndex, 1);
+    console.log(products.splice(currentRowIndex, 1));
 
     currentRow.remove();
   }
 });
+
+
+
 
 
