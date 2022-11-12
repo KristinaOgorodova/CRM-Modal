@@ -82,21 +82,21 @@
                 <fieldset class="add-form">
                     <label  for="name" class="add-form__name item" >
                         <span class="add-form__input-text">Наименование</span>
-                        <input class="add-form__input" type="text" name="name" id="name">
+                        <input class="add-form__input" type="text" name="name" id="name" required>
                     </label>
                     <label for="category"  class="add-form__category item">
                         <span class="add-form__input-text">Категория</span>
-                        <input  class="add-form__input" type="text" name="category" id="category">
+                        <input  class="add-form__input" type="text" name="category" id="category" required>
                     </label>
                     <label for="units" class="add-form__units item">
                         <span class="add-form__input-text">Единицы измерения</span>
-                        <input  class="add-form__input" type="text" name="units" id="units">
+                        <input  class="add-form__input" type="number" name="units" id="units" required>
                     </label>
                     <div class="add-form__discount">
                         <span class="add-form__input-text">Дисконт</span>
                         <div class="add-form__discount-checkbox">
                             <label for="discount" class="add-form__disc item">
-                                <input  class="add-form__checkbox box" type="checkbox" value="discount" id="discount">
+                                <input  class="add-form__checkbox box" type="checkbox" value="discount" id="discount" >
                             </label>
                             <label for="number" class="add-form__disc item">
                                 <input  class="add-form__check box" type="number" id="number">
@@ -105,15 +105,15 @@
                     </div>
                     <label  for="textarea" class="add-form__description item">
                         <span class="add-form__input-text">Описание</span>
-                        <textarea name="description" id="textarea"></textarea>
+                        <textarea name="description" id="textarea" required></textarea>
                     </label>
                     <label for="count" class="add-form__count item">
                         <span class="add-form__input-text">Количество</span>
-                        <input class="add-form__input" type="text" name="count" id="count">
+                        <input class="add-form__input" type="text" name="count" id="count" required>
                     </label>
                     <label for="price" class="add-form__price item">
                         <span class="add-form__input-text">Цена</span>
-                        <input class="add-form__input" type="text" name="price" id="price">
+                        <input class="add-form__input" type="text" name="price" id="price" required>
                     </label>
                     <div class="add-form__button">
                         <button type="file" class="add-form__btn">Добавить изображение</button>

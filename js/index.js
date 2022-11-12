@@ -97,9 +97,11 @@ const form = document.querySelector('.add');
 const addCardBtn = document.querySelector('.table-select__add-btn');
 const modal = document.querySelector('.overlay');
 
-addCardBtn.addEventListener('click', () => {
-  modal.classList.add('overlay_open');
-});
+const openModal = () => {
+  addCardBtn.addEventListener('click', () => {
+    modal.classList.add('overlay_open');
+  });
+}
 
 // modalCloseBtn.addEventListener('click', () => {
 //   modal.classList.remove('overlay_open');
@@ -111,12 +113,14 @@ addCardBtn.addEventListener('click', () => {
 //   modal.classList.remove('overlay_open');
 // });
 
-modal.addEventListener('click', e => {
-  const target = e.target;
-  if (target === modal || target.classList.contains('add-product__close-btn')) {
-    modal.classList.remove('overlay_open');
-  }
-});
+const closeModal = () => {
+  modal.addEventListener('click', e => {
+    const target = e.target;
+    if (target === modal || target.classList.contains('add-product__close-btn')) {
+      modal.classList.remove('overlay_open');
+    }
+  })
+};
 
 const row = document.querySelectorAll('tr');
 row.forEach(tr => {
@@ -134,6 +138,14 @@ tableBody.addEventListener('click', ({target}) => {
     currentRow.remove();
   }
 });
+
+///////////////////////////////////////////////////////////////////
+const discountArea = document.querySelector('.add-form__check');
+discountArea.disabled = true;
+
+if (discountCheckbox.checked) {
+  discountArea.disabled = false;
+};
 
 
 
