@@ -19,7 +19,7 @@
     <div class="container">
         <div class="table-head">
             <h1 class="table-head__title">CMS</h1>
-            <p class="table-head__total">Итоговая стоимость: <span class="bold">$900.00 </span></p>
+            <p class="table-head__total">Итоговая стоимость: <span class="bold" id="total-price"> </span></p>
         </div>
         <div class="container__table-head-line line"></div>
         <div class="table">
@@ -90,7 +90,7 @@
                     </label>
                     <label for="units" class="add-form__units item">
                         <span class="add-form__input-text">Единицы измерения</span>
-                        <input  class="add-form__input" type="number" name="units" id="units" required>
+                        <input  class="add-form__input" type="text" name="units" id="units" required>
                     </label>
                     <div class="add-form__discount">
                         <span class="add-form__input-text">Дисконт</span>
@@ -121,7 +121,7 @@
 
                 </fieldset>
                 <div class="footer">
-                    <p class="add-form__amount">Итоговая стоимость: <span class="bold">$ 900.00</span></p>
+                    <p class="add-form__amount">Итоговая стоимость: <span class="bold" id="form-total-price"></span></p>
                     <div class="button">
                         <button type="submit" class="button_submit">Добавить товар</button>
                     </div>

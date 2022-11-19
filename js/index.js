@@ -63,7 +63,19 @@ const products = [
   },
 ];
 
+
+const renderGoods = (array) => array.map(createRow);
 const tableBody = document.querySelector('tbody');
+const header = document.querySelector('.add-product');
+const discountCheckbox = document.querySelector('#discount');
+const form = document.querySelector('.add');
+const addCardBtn = document.querySelector('.table-select__add-btn');
+const modal = document.querySelector('.overlay');
+const totalPrice = document.getElementById('total-price');
+const formTotalPrice = document.getElementById('form-total-price');
+const count = document.getElementById('count');
+const price = document.getElementById('price');
+const discountInput = document.querySelector('.add-form__check');
 
 const createRow = (obj) => {
   const tr = document.createElement('tr');
@@ -84,47 +96,74 @@ const createRow = (obj) => {
   tableBody.append(tr);
 };
 
-const renderGoods = (array) => array.map(createRow);
 
-renderGoods(products);
-
-const header = document.querySelector('.add-product');
-const discountCheckbox = document.querySelector('#discount');
-const discountQty = document.querySelector('#number');
-const totalSum = document.querySelector('.add-form__amount');
-const form = document.querySelector('.add');
-
-const addCardBtn = document.querySelector('.table-select__add-btn');
-const modal = document.querySelector('.overlay');
+const openModal = () => modal.classList.add('overlay_open');
+const closeModal = () => modal.classList.remove('overlay_open');
 
 
-addCardBtn.addEventListener('click', () => {
-  modal.classList.add('overlay_open');
-});
-
-
-// modalCloseBtn.addEventListener('click', () => {
-//   modal.classList.remove('overlay_open');
-// });
-// form.addEventListener('click', event => {
-//   event.stopPropagation();
-// })
-// modal.addEventListener('click', ()=> {
-//   modal.classList.remove('overlay_open');
-// });
+addCardBtn.addEventListener('click', openModal);
 
 
 modal.addEventListener('click', e => {
   const target = e.target;
   if (target === modal || target.classList.contains('add-product__close-btn')) {
-    modal.classList.remove('overlay_open');
+    closeModal();
   }
 });
 
-const row = document.querySelectorAll('tr');
-row.forEach(tr => {
-  tr.classList.add('table-row');
-});
+const addClassToRow = () => {
+  const row = document.querySelectorAll('tr');
+  row.forEach(tr => {
+    tr.classList.add('table-row');
+  });
+};
+
+const calculateTotalPrice = () => {
+  // const price = products.reduce((acc, product) => acc + product.sum, 0);
+  const price = products.reduce((acc, { sum }) => acc + sum, 0);
+
+  totalPrice.textContent = `$ ${price}`;
+};
+
+const resetForm = () => {
+  form.reset();
+  formTotalPrice.textContent = '';
+};
+
+const disableOrEnableDiscountInput = () => {
+  if (discountCheckbox.checked) {
+    discountInput.disabled = false;
+  } else {
+    discountInput.disabled = true;
+    discountInput.value = '';
+  }
+}
+
+const generateRandomId = () => {
+  return Math.floor(Math.random() * 100000000);
+}
+
+const calculateTotalPriceForProduct = (count, price) => {
+  formTotalPrice.textContent = `$ ${count.value * price.value}`;
+}
+
+const addNewProduct = (product) => {
+  product.id = generateRandomId();
+  product.sum = product.count * product.price;
+
+  products.push(product);
+}
+
+const init = () => {
+  discountInput.disabled = true;
+
+  renderGoods(products);
+  addClassToRow();
+  calculateTotalPrice();
+}
+
+init();
+
 
 tableBody.addEventListener('click', ({target}) => {
   if (target.closest('.delete')) {
@@ -132,37 +171,31 @@ tableBody.addEventListener('click', ({target}) => {
     const productId = +currentRow.querySelector('.product-id').textContent;
     const currentRowIndex = products.findIndex((product) => product.id === productId);
 
-    console.log(products.splice(currentRowIndex, 1));
+    products.splice(currentRowIndex, 1);
 
     currentRow.remove();
   }
 });
 
-///////////////////////////////////////////////////////////////////
-const discountArea = document.querySelector('.add-form__check');
-discountArea.disabled = true;
+discountCheckbox.addEventListener('change', disableOrEnableDiscountInput);
 
-if (discountCheckbox.checked) {
-  discountArea.disabled = false;
-};
+form.addEventListener('change',() => {
 
-const addContactData = product => {
-  products.push(product);
-  console.log('data: ', product);
-}
+ calculateTotalPriceForProduct(count, price)
+});
 
-const addNewProduct = (form, addContactData) => {
-  form.addEventListener('submit', e => {
-    e.preventDefault();
-    const formData = new FormData(e.target);
+form.addEventListener('submit', e => {
+  e.preventDefault();
 
-    const newProduct = Object.fromEntries(formData);
-    addContactData(newProduct);
-    form.reset();
+  const formData = new FormData(e.target);
+  const newProduct = Object.fromEntries(formData);
 
-  });
-}
-
+  addNewProduct(newProduct);
+  createRow(newProduct);
+  calculateTotalPrice();
+  resetForm();
+  closeModal();
+});
 
 
 
