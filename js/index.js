@@ -68,7 +68,7 @@ const renderGoods = (array) => array.map(createRow);
 const tableBody = document.querySelector('tbody');
 const header = document.querySelector('.add-product');
 const discountCheckbox = document.querySelector('#discount');
-const form = document.querySelector('.add');
+const form = document.querySelector('form');
 const addCardBtn = document.querySelector('.table-select__add-btn');
 const modal = document.querySelector('.overlay');
 const totalPrice = document.getElementById('total-price');
