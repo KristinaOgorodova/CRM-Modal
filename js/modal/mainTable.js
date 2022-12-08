@@ -68,6 +68,7 @@ export const tableBody = document.querySelector('tbody');
 export const totalPrice = document.getElementById('total-price');
 
 
+
 tableBody.addEventListener('click', ({target}) => {
   if (target.closest('.delete')) {
     const currentRow = target.closest('.table-row');
@@ -86,3 +87,18 @@ export const calculateTotalPrice = () => {
 
   totalPrice.textContent = `$ ${price}`;
 };
+
+const openNewWindow = (url) => {
+  const screenWidth = screen.width;
+  const screenHeight = screen.height;
+  const newWindow = window.open(url, '', 'width=600,height=600');
+
+  newWindow.moveTo((screenWidth / 2 - 300), (screenHeight / 2) - 300);
+};
+
+tableBody.addEventListener('click', ({target}) => {
+  if (target.closest('.picture-btn')) {
+    openNewWindow('https://sveres.ru/upload/medialibrary/206/003_acer_gn245hq_3d_monitor.jpg');
+  }
+});
+

@@ -13,7 +13,7 @@ export const createRow = (obj) => {
       <td class="amount">${obj.count}</td>
       <td>${obj.price}</td>
       <td>${obj.sum}</td>    
-      <td><button class="picture-btn">
+      <td><button class="picture-btn" data-pic="url">
       <img src="./image/carbon_no-image.svg" alt="нет картинки"></button></td>
       <td><button class="picture-btn">
       <img src="./image/edit.svg" alt="редактировать" ></button></td>
