@@ -97,7 +97,7 @@ const openNewWindow = (url) => {
 };
 
 tableBody.addEventListener('click', ({target}) => {
-  if (target.closest('.picture-btn')) {
+  if (target.closest('.picture-btn_product-picture')) {
     openNewWindow('https://sveres.ru/upload/medialibrary/206/003_acer_gn245hq_3d_monitor.jpg');
   }
 });
